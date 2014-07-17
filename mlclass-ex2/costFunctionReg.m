@@ -18,7 +18,11 @@ grad = zeros(size(theta));
 %               derivatives of the cost w.r.t. each parameter in theta
 
 
+J=(1/m)*sum(-y.*log(sigmoid(X*theta))-(1-y).*log(1-sigmoid(X*theta)))+lambda/(2*m)*theta'*theta;
 
+grad=(1/m)*(X'*(sigmoid(X*theta)-y))+lambda/m*theta;
+[temp_J temp_grad]=costFunction(theta,X,y);
+grad[1]=temp_grad[1];
 
 
 
