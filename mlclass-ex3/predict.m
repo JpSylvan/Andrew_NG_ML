@@ -22,11 +22,11 @@ p = zeros(size(X, 1), 1);
 %
 
 X=[ones(m,1) X];
-layer1=X*Theta1';
-layer1=[ones(m,1) layer1];
-a2=sigmoid(layer1);
-layer2=layer1*Theta2';
-a3=sigmoid(layer2);
+z2=X*Theta1';
+z2=[ones(m,1) z2];
+a2=sigmoid(z2);
+z3=a2*Theta2';
+a3=sigmoid(z3);
 [temp p]=max(a3,[],2);
 
 % =========================================================================
