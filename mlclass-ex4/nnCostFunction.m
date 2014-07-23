@@ -76,6 +76,15 @@ end;
 
 J=sum(sum(-Y.*log(a3)-(1-Y).*log(1-a3)))/m+lambda/(2*m)*(sum(sum(Theta1(:,2:end).^2))+sum(sum(Theta2(:,2:end).^2)));
 
+d3 = a3 - Y;
+d2 = d3 * Theta2(:,2:end) .* sigmoidGradient(z2);
+D2 = d3'*a2;
+D1 = d2'*a1;
+Theta1_grad = D1/m;
+Theta2_grad = D2/m;
+
+Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + lambda/m*Theta1(:,2:end);
+Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + lambda/m*Theta2(:,2:end);
 
 
 % -------------------------------------------------------------
