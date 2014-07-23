@@ -70,23 +70,11 @@ a2=[ones(m,1) a2];
 z3=a2*Theta2';
 a3=sigmoid(z3);
 
-for i = 1:10 
+for i = 1:size(Theta2,1) 
 	Y(:,i) = y == i;
 end;
 
-J=sum(sum(-Y.*log(a3)-(1-Y).*log(1-a3)))/m;
-
-
-
-
-
-
-
-
-
-
-
-
+J=sum(sum(-Y.*log(a3)-(1-Y).*log(1-a3)))/m+lambda/(2*m)*(sum(sum(Theta1(:,2:end).^2))+sum(sum(Theta2(:,2:end).^2)));
 
 
 
